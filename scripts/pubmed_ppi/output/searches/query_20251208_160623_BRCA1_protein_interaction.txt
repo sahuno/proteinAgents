@@ -1,0 +1,10 @@
+# PPI Search Agent Query
+# Generated: 2025-12-08 16:06:23
+# User query: BRCA1 protein interaction
+# Extraction method: Rule-based
+# Total matches: 1,237
+#
+# PubMed Query (copy-paste to PubMed web):
+# ======================================================================
+
+(("english"[Language] NOT "meta-analysis"[Publication Type] NOT "review"[Publication Type] NOT "retracted publication"[Publication Type] NOT "retraction of publication"[Publication Type] NOT "published erratum"[Publication Type] NOT "controlled clinical trial"[Publication Type] NOT "clinical study"[Publication Type] NOT "clinical trial"[Publication Type] NOT "clinical trial protocol"[Publication Type] NOT "clinical trial, phase i"[Publication Type] NOT "clinical trial, phase ii"[Publication Type] NOT "clinical trial, phase iii"[Publication Type] NOT "clinical trial, phase iv"[Publication Type] NOT "clinical trial, veterinary"[Publication Type])) AND (("BRCA1"[All Fields]) AND ("interaction"[All Fields]))

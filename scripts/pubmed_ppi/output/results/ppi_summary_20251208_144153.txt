@@ -1,0 +1,54 @@
+================================================================================
+PubMed PPI Search Summary Report
+================================================================================
+Generated: 2025-12-08 14:41:53
+
+SEARCH STATISTICS
+----------------------------------------
+Total matches in PubMed: 2,117,193
+PMIDs retrieved: 20
+Articles fetched: 100
+
+ARTICLE STATISTICS
+----------------------------------------
+Total articles analyzed: 100
+Year range: 2025 - 2026
+Unique journals: 81
+
+TOP 10 JOURNALS
+----------------------------------------
+     5 | Nature communications
+     3 | Veterinary parasitology, regional studies and reports
+     3 | The Journal of biological chemistry
+     3 | Biochemistry. Biokhimiia
+     3 | Plant physiology and biochemistry : PPB
+     2 | Advanced science (Weinheim, Baden-Wurttemberg, Germany)
+     2 | Journal of biomolecular structure & dynamics
+     2 | Functional & integrative genomics
+     2 | Cell death & disease
+     2 | International journal of biological macromolecules
+
+TOP 20 MeSH TERMS
+----------------------------------------
+    18 | Humans
+    13 | Animals
+    11 | Female
+    10 | Male
+     6 | Mice
+     6 | Cell Line, Tumor
+     3 | Middle Aged
+     3 | Mutation
+     3 | Drug Resistance
+     3 | Rats
+     3 | Rats, Sprague-Dawley
+     2 | Polyphenols
+     2 | Aged
+     2 | Retrospective Studies
+     2 | Adult
+     2 | Oxidative Stress
+     2 | NF-kappa B
+     2 | Mice, Inbred BALB C
+     2 | Coccidiosis
+     2 | Diabetic Nephropathies
+
+================================================================================

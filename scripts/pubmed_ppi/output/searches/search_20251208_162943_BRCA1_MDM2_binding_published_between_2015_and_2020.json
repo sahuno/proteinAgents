@@ -1,0 +1,33 @@
+{
+  "timestamp": "20251208_162943",
+  "date": "2025-12-08T16:29:43.201669",
+  "user_query": "BRCA1 MDM2 binding published between 2015 and 2020",
+  "extraction_method": "LLM (Claude)",
+  "extracted_terms": {
+    "proteins": [
+      "BRCA1",
+      "MDM2"
+    ],
+    "interaction_types": [
+      "binding"
+    ],
+    "methods": [],
+    "organisms": [],
+    "diseases": [],
+    "keywords": [],
+    "year_range": [
+      2015,
+      2020
+    ]
+  },
+  "pubmed_query": "((\"english\"[Language] NOT \"meta-analysis\"[Publication Type] NOT \"review\"[Publication Type] NOT \"retracted publication\"[Publication Type] NOT \"retraction of publication\"[Publication Type] NOT \"published erratum\"[Publication Type] NOT \"controlled clinical trial\"[Publication Type] NOT \"clinical study\"[Publication Type] NOT \"clinical trial\"[Publication Type] NOT \"clinical trial protocol\"[Publication Type] NOT \"clinical trial, phase i\"[Publication Type] NOT \"clinical trial, phase ii\"[Publication Type] NOT \"clinical trial, phase iii\"[Publication Type] NOT \"clinical trial, phase iv\"[Publication Type] NOT \"clinical trial, veterinary\"[Publication Type])) AND ((\"BRCA1\"[All Fields] AND \"MDM2\"[All Fields]) AND (\"binding\"[All Fields]) AND (\"2015\"[Date - Publication] : \"2020\"[Date - Publication]))",
+  "total_count": 5,
+  "pmids_retrieved": 5,
+  "pmids": [
+    "32405340",
+    "29059438",
+    "28374118",
+    "28005077",
+    "26083618"
+  ]
+}

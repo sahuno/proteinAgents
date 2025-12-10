@@ -1,0 +1,10 @@
+# PPI Search Agent Query
+# Generated: 2025-12-08 16:30:28
+# User query: protein protein interaction in algarose gel published between 2015 and 2020
+# Extraction method: LLM (Claude)
+# Total matches: 0
+#
+# PubMed Query (copy-paste to PubMed web):
+# ======================================================================
+
+(("english"[Language] NOT "meta-analysis"[Publication Type] NOT "review"[Publication Type] NOT "retracted publication"[Publication Type] NOT "retraction of publication"[Publication Type] NOT "published erratum"[Publication Type] NOT "controlled clinical trial"[Publication Type] NOT "clinical study"[Publication Type] NOT "clinical trial"[Publication Type] NOT "clinical trial protocol"[Publication Type] NOT "clinical trial, phase i"[Publication Type] NOT "clinical trial, phase ii"[Publication Type] NOT "clinical trial, phase iii"[Publication Type] NOT "clinical trial, phase iv"[Publication Type] NOT "clinical trial, veterinary"[Publication Type])) AND (("protein protein interaction"[All Fields]) AND ("algarose gel"[All Fields]) AND ("2015"[Date - Publication] : "2020"[Date - Publication]))
