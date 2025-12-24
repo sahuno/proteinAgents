@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
-# ## single agent for A2 block only
+
+### single agent for A1 block only
 from langgraph.graph import MessagesState
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
@@ -43,40 +44,49 @@ def search_pubmed(query, retmax=200):
     }
 
 ### Tool 2: concatenate pubmed queries
-def concatenate_pubmed_queries(A2_block):
+def concatenate_pubmed_queries(A1_block):
     """
     Concatenate PubMed queries with a base query using a logical operator .
     Args:
-        A2_block (str): Terms for Inclusion criteria (methods) that would concatenated with O_block terms.
+        A1_block (str): Terms for Inclusion criteria (concepts) that would concatenated with O_block terms.
     Returns:
         str: The combined PubMed query.
 
     Examples:
-    Example 1: User wants to create an advanced pubmed query to retrieve research papers on protein protein interactions. Below are examples of A2 blocks that would be concatenated with O_block to create the final query.
+    Example 1: User wants to create an advanced pubmed query to retrieve research papers on protein protein interactions. Below are examples of A1 blocks that would be concatenated with O_block to create the final query.
     -----------
-
-# A2: INCLUSION CRITERIA - METHODS (experimental techniques we want)
-A2_block = (
-    '("Immunoprecipitation"[MeSH Terms] '
-    'OR "coimmunoprecipitation"[All Fields] '
-    'OR ("co"[All Fields] AND "immunoprecipitation"[All Fields]) '
-    'OR ("RNA"[All Fields] AND "immunoprecipitation"[All Fields]) '
-    'OR "co immunoprecipitation"[All Fields] '
-    'OR "coIP"[All Fields] '
-    'OR "Chromatography, Affinity"[MeSH Terms] '
-    'OR "affinity purification"[All Fields] '
-    'OR "affinity isolation"[All Fields] '
-    'OR "affinity chromatography"[All Fields] '
-    'OR ("affinity"[All Fields] AND ("purification"[All Fields] '
-    'OR "isolation"[All Fields] OR "chromatography"[All Fields])) '
-    'OR "pulldown"[All Fields] '
-    'OR ("pull"[All Fields] AND ("down"[All Fields] OR "downs"[All Fields])) '
-    'OR "crystallography, x ray"[MeSH Terms] '
-    'OR "Nuclear Magnetic Resonance, Biomolecular"[MeSH Terms] '
-    'OR "Cryoelectron Microscopy"[MeSH Terms] '
-    'OR "Protein Array Analysis"[MeSH Terms] '
-    'OR "electrophoretic mobility shift assay"[MeSH Terms] '
-    'OR "Surface Plasmon Resonance"[MeSH Terms])'
+        # A1: INCLUSION CRITERIA - CONCEPTS (protein complexes, interactions)
+A1_block = (
+    '("nucleoproteins"[MeSH Terms] '
+    'OR "protein interaction mapping"[MeSH Terms] '
+    'OR (("nucleoprotein"[All Fields] OR "nucleoproteins"[All Fields] '
+    'OR "multiprotein"[All Fields] OR "multiproteins"[All Fields] '
+    'OR "proteins"[MeSH Terms] OR "protein"[All Fields] '
+    'OR "proteins"[All Fields] OR "enzyme"[All Fields]) '
+    'AND ("interact"[All Fields] OR "interacted"[All Fields] '
+    'OR "interacting"[All Fields] OR "interaction"[All Fields] '
+    'OR "interactions"[All Fields] OR "interactivity"[All Fields] '
+    'OR "interacts"[All Fields])) '
+    'OR "protein interaction"[All Fields] '
+    'OR "protein interactions"[All Fields] '
+    'OR "interacting protein"[All Fields] '
+    'OR "interacting proteins"[All Fields] '
+    'OR "multiprotein complexes"[MeSH Terms] '
+    'OR (("nucleoprotein"[All Fields] OR "nucleoproteins"[All Fields] '
+    'OR "multiprotein"[All Fields] OR "multiproteins"[All Fields] '
+    'OR "proteins"[MeSH Terms] OR "protein"[All Fields] '
+    'OR "proteins"[All Fields] OR "enzyme"[All Fields]) '
+    'AND ("complex"[All Fields] OR "complexes"[All Fields] '
+    'OR "heteromer"[All Fields] OR "heteromers"[All Fields] '
+    'OR "homomer"[All Fields] OR "homomers"[All Fields] '
+    'OR "heteromeric"[All Fields] OR "homomeric"[All Fields] '
+    'OR "subunit"[All Fields] OR "subunits"[All Fields])) '
+    'OR "protein complex"[All Fields] '
+    'OR "protein complexes"[All Fields] '
+    'OR ("protein"[All Fields] '
+    'AND ("RNA"[All Fields] OR "DNA"[All Fields] '
+    'OR "ribonucleic"[All Fields] OR "deoxyribonucleic"[All Fields]) '
+    'AND ("interaction"[All Fields] OR "interactions"[All Fields])))'
 )
     """
     # O_block (always constant): Terms to exclude unwanted publication types and non-English articles
@@ -97,7 +107,7 @@ A2_block = (
     'NOT "clinical trial, phase iv"[Publication Type] '
     'NOT "clinical trial, veterinary"[Publication Type])'
 )
-    return f"({O_block} AND ({A2_block}))" 
+    return f"({O_block} AND ({A1_block}))" 
 
 
 llm = ChatOpenAI(model="gpt-4o")
@@ -107,15 +117,15 @@ llm_with_tools = llm.bind_tools(tools)
 # System message
 sys_msg = SystemMessage(content="""You are a Molecular Biologist and an expert in constructing Advanced Pubmed Queries. 
                         you perform your job through a dialogue with scientists. 
-                        Users give you a few examples of protocols they are interested in and your task is to understand and suggest similar protocols that are similar to the provided protocol list.
+                        Users give you a few examples of CONCEPTS they are interested in and your task is to understand and suggest similar CONCEPTS that are similar to the provided CONCEPTS list.
                         You will then use this understanding to create a refined pubmed query that can be used to retrieve those papers.
                         This means your role is to both help the scientists refine what they want to search for and then construct the actual PubMed Advanced query that captures the papers of interest.
                         
                         Understand what the user is for studying then begin by creating pubmed query terms we call `blocks` that capture different aspects of the user's interest.
                         Specifically, you will always create the following blocks:
-                        1. A2_block: A block of terms (for example, MeSH terms) that captures the methods/approaches of interest called `A2_block`
+                        1. A1_block: A block of terms (for example, MeSH terms) that captures the methods/approaches of interest called `A1_block`
                         Note that, There is always a block of terms `O_block` that excludes non-English articles and unwanted publication types such as reviews, meta-analyses, clinical trials etc. that should always be included in the final query.
-                        You will then concatenate all the blocks into a final PubMed query using the following logic: `(O_block AND (A2_block))` which you can achieve by using the tool `concatenate_pubmed_queries()`.
+                        You will then concatenate all the blocks into a final PubMed query using the following logic: `(O_block AND (A1_block))` which you can achieve by using the tool `concatenate_pubmed_queries()`.
                         Always call `concatenate_pubmed_queries()` tool to generate the final query for user and explicity say "THIS IS SUGGESTED FINAL QUERY".
                         Pls use `search_pubmed()` tool for searching PubMed after generating the final query.
                         """, 
@@ -152,7 +162,7 @@ memory = MemorySaver()
 react_graph_with_memory = builder.compile(checkpointer=memory)
 config = {"configurable": {"thread_id":"1"}}
 
-pmed_humanMsg= "co immunoprecipitation, affinity purification, pull down, x ray crystallography, nmr biomolecular, cryoelectron microscopy, protein array analysis, surface plasmon resonance"
+pmed_humanMsg= "nucleoprotein, multiproteins, proteins, interacting, multiprotein complexes, complexes, RNA"
 messages = [HumanMessage(content=pmed_humanMsg)]
 messages = react_graph_with_memory.invoke({"messages": messages},config)
 for m in messages['messages']:
