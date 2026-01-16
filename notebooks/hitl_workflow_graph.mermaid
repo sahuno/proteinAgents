@@ -1,0 +1,42 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	detect_ambiguity(detect_ambiguity)
+	extract_protocols(extract_protocols)
+	expand_protocols(expand_protocols)
+	request_protocol_approval(request_protocol_approval)
+	create_a2_block(create_a2_block)
+	create_final_query(create_final_query)
+	show_query_for_approval(show_query_for_approval)
+	search_pubmed_node(search_pubmed_node)
+	validate_results(validate_results)
+	ask_for_next_action(ask_for_next_action)
+	refine_query_node(refine_query_node)
+	start_new_search(start_new_search)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> detect_ambiguity;
+	ask_for_next_action -. &nbsp;done&nbsp; .-> __end__;
+	ask_for_next_action -. &nbsp;refine&nbsp; .-> refine_query_node;
+	ask_for_next_action -. &nbsp;new_search&nbsp; .-> start_new_search;
+	create_a2_block --> create_final_query;
+	create_final_query --> show_query_for_approval;
+	detect_ambiguity -. &nbsp;wait_for_clarification&nbsp; .-> __end__;
+	detect_ambiguity -.-> extract_protocols;
+	expand_protocols --> request_protocol_approval;
+	extract_protocols --> expand_protocols;
+	refine_query_node --> detect_ambiguity;
+	request_protocol_approval -. &nbsp;wait_for_approval&nbsp; .-> __end__;
+	request_protocol_approval -.-> create_a2_block;
+	search_pubmed_node --> validate_results;
+	show_query_for_approval -. &nbsp;wait_for_query_approval&nbsp; .-> __end__;
+	show_query_for_approval -.-> search_pubmed_node;
+	start_new_search --> detect_ambiguity;
+	validate_results -. &nbsp;wait_for_validation&nbsp; .-> __end__;
+	validate_results -. &nbsp;ask_next&nbsp; .-> ask_for_next_action;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

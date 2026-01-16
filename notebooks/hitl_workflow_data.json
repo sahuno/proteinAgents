@@ -1,0 +1,87 @@
+{
+  "workflow_log": [
+    {
+      "step": 1,
+      "checkpoint": "Initial Input",
+      "user_input": "co immunoprecipitation, affinity purification",
+      "state_after": "awaiting_protocol_approval",
+      "protocols": [
+        "co immunoprecipitation",
+        "affinity purification"
+      ],
+      "suggested": [
+        "1. Yeast Two-Hybrid Screening",
+        "2. Pull-Down Assay",
+        "3. Proximity Ligation Assay",
+        "4. Tandem Affinity Purification",
+        "5. Cross-Linking Mass Spectrometry"
+      ]
+    },
+    {
+      "step": 2,
+      "checkpoint": "Protocol Approval",
+      "user_input": "approve all",
+      "state_after": "awaiting_protocol_approval",
+      "approved_protocols": [
+        "co immunoprecipitation",
+        "affinity purification",
+        "1. Yeast Two-Hybrid Screening",
+        "2. Pull-Down Assay",
+        "3. Proximity Ligation Assay",
+        "4. Tandem Affinity Purification",
+        "5. Cross-Linking Mass Spectrometry"
+      ],
+      "A2_block_created": false
+    },
+    {
+      "step": 3,
+      "checkpoint": "Query Approval",
+      "user_input": "approve",
+      "state_after": "awaiting_protocol_approval",
+      "final_query": "...",
+      "search_executed": false
+    },
+    {
+      "step": 4,
+      "checkpoint": "Results Validation",
+      "user_input": "accept",
+      "state_after": "awaiting_protocol_approval",
+      "results_count": 0
+    },
+    {
+      "step": 5,
+      "checkpoint": "Next Action",
+      "user_input": "done",
+      "state_after": "awaiting_protocol_approval",
+      "workflow_complete": true
+    }
+  ],
+  "summary": {
+    "initial_protocols": [
+      "co immunoprecipitation",
+      "affinity purification"
+    ],
+    "suggested_protocols": [
+      "1. Yeast Two-Hybrid Screening",
+      "2. Pull-Down Assay",
+      "3. Proximity Ligation Assay",
+      "4. Tandem Affinity Purification",
+      "5. Cross-Linking Mass Spectrometry"
+    ],
+    "approved_protocols": [
+      "co immunoprecipitation",
+      "affinity purification",
+      "1. Yeast Two-Hybrid Screening",
+      "2. Pull-Down Assay",
+      "3. Proximity Ligation Assay",
+      "4. Tandem Affinity Purification",
+      "5. Cross-Linking Mass Spectrometry"
+    ],
+    "final_query": "",
+    "search_results_count": 0,
+    "sample_pmids": [],
+    "total_steps": 5,
+    "checkpoints_triggered": 5
+  },
+  "timestamp": "2025-12-26T12:45:12.841079"
+}

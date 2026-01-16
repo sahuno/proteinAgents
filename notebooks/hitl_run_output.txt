@@ -1,0 +1,107 @@
+=== PubMed Query Builder with HITL ===
+Enter your protocols (comma-separated) or 'quit' to exit
+
+
+You: 
+Assistant: Based on your protocols, I suggest including these similar methods:
+
+**Your protocols:**
+  - co immunoprecipitation
+  - affinity purification
+
+**Suggested additions:**
+  - 1. Yeast Two-Hybrid Screening
+  - 2. Pull-Down Assay
+  - 3. Surface Plasmon Resonance
+  - 4. Fluorescence Resonance Energy Transfer (FRET)
+  - 5. Tandem Affinity Purification (TAP)
+
+Please review and respond with:
+- "approve all" to include all suggestions
+- "approve: <protocol1>, <protocol2>" to select specific ones
+- "add: <new_protocol>" to suggest additional protocols
+- "skip suggestions" to use only your original protocols
+
+You: 
+Assistant: Based on your protocols, I suggest including these similar methods:
+
+**Your protocols:**
+  - approve all
+
+**Suggested additions:**
+  - To identify complementary experimental methods for studying protein-protein interactions, I'll suggest a few commonly used techniques that expand on or complement user-provided protocols. Here are 5 additional methods:
+  - 1. Co-immunoprecipitation (Co-IP)
+  - 2. Yeast Two-Hybrid Screening
+  - 3. Bimolecular Fluorescence Complementation (BiFC)
+  - 4. Förster Resonance Energy Transfer (FRET)
+
+Please review and respond with:
+- "approve all" to include all suggestions
+- "approve: <protocol1>, <protocol2>" to select specific ones
+- "add: <new_protocol>" to suggest additional protocols
+- "skip suggestions" to use only your original protocols
+
+You: 
+Assistant: Based on your protocols, I suggest including these similar methods:
+
+**Your protocols:**
+  - approve
+
+**Suggested additions:**
+  - Certainly! Here are additional similar experimental methods commonly used in protein-protein interaction studies:
+  - 1. Yeast Two-Hybrid Assay
+  - 2. Co-Immunoprecipitation (Co-IP)
+  - 3. Förster Resonance Energy Transfer (FRET)
+  - 4. Surface Plasmon Resonance (SPR)
+
+Please review and respond with:
+- "approve all" to include all suggestions
+- "approve: <protocol1>, <protocol2>" to select specific ones
+- "add: <new_protocol>" to suggest additional protocols
+- "skip suggestions" to use only your original protocols
+
+You: 
+Assistant: Based on your protocols, I suggest including these similar methods:
+
+**Your protocols:**
+  - accept
+
+**Suggested additions:**
+  - Sure, I can help with that. The user protocol "accept" isn't entirely clear as it seems to be a typo or incomplete. For protein-protein interaction studies, some common experimental methods include:
+  - 1. Co-immunoprecipitation (Co-IP)
+  - 2. Yeast Two-Hybrid (Y2H) Assay
+  - 3. Fluorescence Resonance Energy Transfer (FRET)
+  - 4. Surface Plasmon Resonance (SPR)
+
+Please review and respond with:
+- "approve all" to include all suggestions
+- "approve: <protocol1>, <protocol2>" to select specific ones
+- "add: <new_protocol>" to suggest additional protocols
+- "skip suggestions" to use only your original protocols
+
+You: 
+Assistant: Based on your protocols, I suggest including these similar methods:
+
+**Your protocols:**
+  - done
+
+**Suggested additions:**
+  - 1. Co-immunoprecipitation (Co-IP)
+  - 2. Yeast Two-Hybrid Screen
+  - 3. Bimolecular Fluorescence Complementation (BiFC)
+  - 4. Surface Plasmon Resonance (SPR) Analysis
+  - 5. Förster Resonance Energy Transfer (FRET)
+
+Please review and respond with:
+- "approve all" to include all suggestions
+- "approve: <protocol1>, <protocol2>" to select specific ones
+- "add: <new_protocol>" to suggest additional protocols
+- "skip suggestions" to use only your original protocols
+
+You: Traceback (most recent call last):
+  File "/Users/ahunos/myWork/proteinAgents/notebooks/blockA_single_Agent_HITL.py", line 1224, in <module>
+    run_hitl_conversation()
+  File "/Users/ahunos/myWork/proteinAgents/notebooks/blockA_single_Agent_HITL.py", line 785, in run_hitl_conversation
+    user_input = input("\nYou: ").strip()
+                 ^^^^^^^^^^^^^^^^
+EOFError: EOF when reading a line
